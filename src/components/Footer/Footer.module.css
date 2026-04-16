@@ -1,0 +1,30 @@
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.dot {
+  color: var(--accent-fg);
+}
+
+@media (max-width: 700px) {
+  .footer {
+    padding: 1.5rem;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+  }
+}
