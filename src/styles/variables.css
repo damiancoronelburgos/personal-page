@@ -1,0 +1,60 @@
+/* ── Typography tokens ─────────────────────────────────────────────────────── */
+:root {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans:    "DM Sans", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ── Dark theme ────────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg:           #040d1a;
+  --bg-surface:   #080f20;
+  --bg-elevated:  #0d1a30;
+  --text:         #dce8f8;
+  --text-muted:   #6a8aaf;
+  --border:       rgba(59, 130, 246, 0.10);
+  --nav-bg:       rgba(4, 13, 26, 0.94);
+
+  --accent:        #4f8ef7;
+  --accent-fg:     #4f8ef7;
+  --accent-dim:    rgba(79, 142, 247, 0.07);
+  --accent-border: rgba(79, 142, 247, 0.20);
+
+  --accent2:        #1eaacf;
+  --accent2-fg:     #1eaacf;
+  --accent2-dim:    rgba(30, 170, 207, 0.07);
+  --accent2-border: rgba(30, 170, 207, 0.18);
+
+  --btn-primary-text: #ffffff;
+
+  --selection-bg: rgba(79, 142, 247, 0.18);
+  --grid-line:    rgba(79, 142, 247, 0.04);
+  --glow:         rgba(79, 142, 247, 0.07);
+}
+
+/* ── Light theme ───────────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg:           #f5f8ff;
+  --bg-surface:   #ffffff;
+  --bg-elevated:  #eaf0fb;
+  --text:         #0c1b33;
+  --text-muted:   #4a6585;
+  --border:       rgba(37, 99, 235, 0.11);
+  --nav-bg:       rgba(245, 248, 255, 0.94);
+
+  --accent:        #1a4fc4;
+  --accent-fg:     #1a4fc4;
+  --accent-dim:    rgba(26, 79, 196, 0.06);
+  --accent-border: rgba(26, 79, 196, 0.18);
+
+  --accent2:        #0369a1;
+  --accent2-fg:     #0369a1;
+  --accent2-dim:    rgba(3, 105, 161, 0.06);
+  --accent2-border: rgba(3, 105, 161, 0.18);
+
+  --btn-primary-text: #ffffff;
+
+  --selection-bg: rgba(26, 79, 196, 0.10);
+  --grid-line:    rgba(26, 79, 196, 0.04);
+  --glow:         rgba(26, 79, 196, 0.05);
+}

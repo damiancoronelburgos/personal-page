@@ -1,0 +1,170 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 3rem;
+  background: var(--nav-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.scrolled {
+  border-bottom-color: var(--border);
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Progress bar ──────────────────────────────────────────────────────────── */
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-fg), var(--accent2-fg));
+  transition: width 0.08s linear;
+  pointer-events: none;
+}
+
+/* ── Logo ──────────────────────────────────────────────────────────────────── */
+.logo {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent-fg);
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+/* ── Nav links ─────────────────────────────────────────────────────────────── */
+.links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navLink {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0 0 4px;
+  transition: color 0.2s;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent-fg);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.navLink:hover { color: var(--text); }
+.navLink:hover::after { transform: scaleX(1); }
+
+.activeLink { color: var(--accent-fg); }
+.activeLink::after { transform: scaleX(1); }
+
+/* ── Controls ──────────────────────────────────────────────────────────────── */
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.controlBtn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 5px 11px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.controlBtn:hover {
+  color: var(--accent-fg);
+  border-color: var(--accent-border);
+}
+
+.themeBtn {
+  width: 32px;
+  padding: 5px;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+/* ── Hamburger ─────────────────────────────────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--text-muted);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.hamburgerOpen span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburgerOpen span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburgerOpen span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .nav { padding: 1rem 1.5rem; }
+
+  .links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+  }
+
+  .links.open { display: flex; }
+
+  .navLink {
+    padding: 0.75rem 1.5rem 0.75rem;
+    width: 100%;
+    text-align: left;
+  }
+
+  .navLink::after { display: none; }
+
+  .hamburger { display: flex; }
+}
