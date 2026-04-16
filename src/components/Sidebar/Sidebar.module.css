@@ -1,0 +1,303 @@
+/* ── Sidebar shell ──────────────────────────────────────────────────────────── */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 2.25rem 1.75rem 2rem;
+  z-index: 300;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  /* Subtle glass effect on dark theme */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: background 0.3s;
+}
+
+.sidebar::-webkit-scrollbar { display: none; }
+
+/* ── Vertical scroll-progress ───────────────────────────────────────────────── */
+.progressTrack {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.progressBar {
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to bottom, var(--accent-fg), var(--accent2-fg));
+  transition: height 0.1s linear;
+}
+
+/* ── Logo ───────────────────────────────────────────────────────────────────── */
+.logo {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-fg);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 2.25rem;
+}
+
+/* ── Name block ─────────────────────────────────────────────────────────────── */
+.nameBlock {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.firstName {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--text);
+  -webkit-text-fill-color: var(--text);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+.lastName {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.6rem;
+  background: linear-gradient(135deg, var(--accent-fg) 0%, var(--accent2-fg) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.jobTitle {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+
+/* ── Navigation ─────────────────────────────────────────────────────────────── */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.navLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  text-align: left;
+  width: 100%;
+  transition: background 0.18s;
+}
+
+.navLink:hover {
+  background: var(--accent-dim);
+}
+
+/* Framer Motion layout animated indicator */
+.indicator {
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  z-index: 0;
+}
+
+.navNum {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  opacity: 0.45;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.2s;
+}
+
+.navLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s;
+}
+
+.navActive .navLabel {
+  color: var(--accent-fg);
+}
+
+.navActive .navNum {
+  opacity: 0.7;
+  color: var(--accent-fg);
+}
+
+/* ── Spacer ─────────────────────────────────────────────────────────────────── */
+.spacer { flex: 1; min-height: 1.5rem; }
+
+/* ── Controls ───────────────────────────────────────────────────────────────── */
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ctrlBtn {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.ctrlBtn:hover {
+  color: var(--accent-fg);
+  border-color: var(--accent-border);
+  background: var(--accent-dim);
+}
+
+/* ── Social links ───────────────────────────────────────────────────────────── */
+.social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.socialLink {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  padding: 0.25rem 0;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.socialLink::before {
+  content: '↗';
+  font-size: 9px;
+  opacity: 0.4;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.socialLink:hover {
+  color: var(--accent-fg);
+}
+
+.socialLink:hover::before {
+  opacity: 1;
+  transform: translate(1px, -1px);
+}
+
+/* ── Copyright ──────────────────────────────────────────────────────────────── */
+.copy {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  opacity: 0.35;
+  letter-spacing: 0.06em;
+}
+
+/* ── Mobile hamburger (hidden on desktop) ───────────────────────────────────── */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 400;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text-muted);
+  border-radius: 2px;
+}
+
+/* ── Mobile close button ────────────────────────────────────────────────────── */
+.closeBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 16px;
+  cursor: pointer;
+  align-self: flex-end;
+  padding: 0;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+/* ── Overlay ────────────────────────────────────────────────────────────────── */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 250;
+  backdrop-filter: blur(2px);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s;
+    box-shadow: none;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: 8px 0 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .hamburger { display: flex; }
+  .closeBtn  { display: block; }
+  .overlay   { display: block; }
+}

@@ -4,69 +4,166 @@
   margin: 0 auto;
 }
 
-/* ── List ──────────────────────────────────────────────────────────────────── */
-.list { display: flex; flex-direction: column; }
-
-.row {
-  display: grid;
-  grid-template-columns: 1fr 170px 88px;
-  gap: 1rem 2rem;
-  padding: 1.3rem 0;
-  border-bottom: 1px solid var(--border);
-  align-items: baseline;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.45s ease, transform 0.45s ease, border-bottom-color 0.2s;
+/* ── Carousel wrapper ───────────────────────────────────────────────────────── */
+.carouselWrap {
+  position: relative;
+  padding-bottom: 3.5rem; /* space for pagination dots */
 }
 
-.row:first-child { border-top: 1px solid var(--border); }
+.swiper {
+  overflow: visible !important;
+  padding: 0.5rem 0 0.25rem !important;
+}
 
-.visible .row { opacity: 1; transform: translateY(0); }
+/* ── Cards ──────────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
 
-.row:hover { border-bottom-color: var(--accent-border); }
-.row:hover .name { color: var(--text); }
+/* Gradient top-line on hover */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-fg), var(--accent2-fg));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
 
-/* ── Columns ───────────────────────────────────────────────────────────────── */
-.name {
-  font-size: 14px;
+.card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── Card internals ─────────────────────────────────────────────────────────── */
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cardYear {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent2-fg);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cardIndex {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  opacity: 0.3;
+  letter-spacing: 0.06em;
+}
+
+.cardName {
+  font-size: 13.5px;
   font-weight: 400;
   color: var(--text);
-  opacity: 0.85;
   line-height: 1.5;
-  transition: color 0.15s, opacity 0.15s;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
 }
 
-.row:hover .name { opacity: 1; }
+.cardBottom {
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
 
-.inst {
+.cardInst {
   font-family: var(--font-mono);
   font-size: 10.5px;
   color: var(--accent-fg);
   opacity: 0.65;
-  letter-spacing: 0.04em;
-  text-align: right;
+  letter-spacing: 0.06em;
 }
 
-.year {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
+/* ── Custom navigation buttons ──────────────────────────────────────────────── */
+.navBtn {
+  position: absolute;
+  top: -3.5rem;
+  z-index: 10;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
   color: var(--text-muted);
-  opacity: 0.55;
-  letter-spacing: 0.04em;
-  text-align: right;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  font-family: var(--font-mono);
+}
+
+.navBtn:hover {
+  color: var(--accent-fg);
+  border-color: var(--accent-border);
+  background: var(--accent-dim);
+}
+
+.navBtn:global(.swiper-button-disabled) {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.navPrev { right: 48px; }
+.navNext { right: 4px; }
+
+/* ── Pagination dots ────────────────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Override Swiper bullet styles via :global */
+.pagination :global(.swiper-pagination-bullet) {
+  width: 6px;
+  height: 6px;
+  background: var(--text-muted);
+  opacity: 0.3;
+  border-radius: 50%;
+  transition: opacity 0.2s, transform 0.2s, background 0.2s;
+  cursor: pointer;
+}
+
+.pagination :global(.swiper-pagination-bullet-active) {
+  background: var(--accent-fg);
+  opacity: 1;
+  transform: scale(1.3);
 }
 
 /* ── Responsive ─────────────────────────────────────────────────────────────── */
 @media (max-width: 700px) {
   .section { padding: 4rem 1.5rem; }
-
-  .row {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    gap: 0.2rem 1rem;
-  }
-
-  .name { grid-column: 1 / -1; font-size: 13px; }
-  .inst { text-align: left; }
-  .year { text-align: right; }
 }

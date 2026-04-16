@@ -108,3 +108,21 @@ textarea {
 .delay-3  { animation-delay: 0.40s; }
 .delay-4  { animation-delay: 0.56s; }
 .pulse    { animation: pulse 2.5s ease-in-out infinite; }
+
+/* ── Sidebar layout ────────────────────────────────────────────────────────── */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  margin-left: 260px;
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    margin-left: 0;
+  }
+}
