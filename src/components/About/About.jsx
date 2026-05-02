@@ -3,17 +3,24 @@ import useInView from "../../hooks/useInView";
 import SectionLabel from "../ui/SectionLabel";
 import styles from "./About.module.css";
 
+const PHOTO = null; // Reemplazar con: import photo from "../../assets/photo.jpg"
+
+const META_ES = [
+  { label: "Ubicación",     value: "Buenos Aires, AR" },
+  { label: "Disponibilidad", value: "Disponible" },
+  { label: "Idiomas",       value: "ES nativo · EN B1" },
+];
+
+const META_EN = [
+  { label: "Location",      value: "Buenos Aires, AR" },
+  { label: "Availability",  value: "Available" },
+  { label: "Languages",     value: "ES native · EN B1" },
+];
+
 export default function About() {
   const { lang, t } = useLang();
   const [ref, inView] = useInView();
-
-  const contactItems = [
-    ["📍", "Buenos Aires, Argentina"],
-    ["📧", "danielcoronelburgos1993@gmail.com"],
-    ["📱", "+54 381-448-1920"],
-    ["💼", "linkedin.com/in/damian-coronel-burgos"],
-    ["🌐", lang === "es" ? "Inglés B1" : "English B1"],
-  ];
+  const meta = lang === "es" ? META_ES : META_EN;
 
   return (
     <section id="about" className={styles.section}>
@@ -22,22 +29,37 @@ export default function About() {
         ref={ref}
         className={`${styles.grid} ${inView ? styles.visible : ""}`}
       >
+        {/* ── Bio ── */}
         <div className={styles.bio}>
           <p>{t.about.p1}</p>
           <p>{t.about.p2}</p>
           <p>{t.about.p3}</p>
         </div>
-        <div className={styles.info}>
-          {contactItems.map(([icon, val], i) => (
-            <div
-              key={i}
-              className={styles.infoItem}
-              style={{ transitionDelay: `${i * 55}ms` }}
-            >
-              <span className={styles.icon}>{icon}</span>
-              <span className={styles.value}>{val}</span>
-            </div>
-          ))}
+
+        {/* ── Foto + meta ── */}
+        <div className={styles.profile}>
+          <div className={styles.photoWrap}>
+            {PHOTO ? (
+              <img src={PHOTO} alt="Damian Coronel" className={styles.photo} />
+            ) : (
+              <div className={styles.photoPlaceholder} aria-hidden="true">
+                <span className={styles.initials}>DCB</span>
+              </div>
+            )}
+          </div>
+
+          <ul className={styles.metaList}>
+            {meta.map(({ label, value }, i) => (
+              <li
+                key={i}
+                className={styles.metaItem}
+                style={{ transitionDelay: `${i * 70}ms` }}
+              >
+                <span className={styles.metaLabel}>{label}</span>
+                <span className={styles.metaValue}>{value}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
