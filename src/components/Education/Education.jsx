@@ -36,7 +36,9 @@ export default function Education() {
             <div className={styles.cardBottom}>
               <span className={styles.cardInst}>{edu.inst}</span>
 
-              {edu.cert && (
+              {edu.pending ? (
+                <span className={styles.pendingBadge}>{t.education.thesisPending}</span>
+              ) : edu.cert ? (
                 <a
                   href={`${BASE}certificates/${edu.cert}`}
                   target="_blank"
@@ -47,7 +49,7 @@ export default function Education() {
                   {t.education.viewCert}
                   <span className={styles.certArrow} aria-hidden="true">↗</span>
                 </a>
-              )}
+              ) : null}
             </div>
           </div>
         ))}
