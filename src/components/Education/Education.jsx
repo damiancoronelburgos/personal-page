@@ -3,8 +3,6 @@ import useInView from "../../hooks/useInView";
 import SectionLabel from "../ui/SectionLabel";
 import styles from "./Education.module.css";
 
-const BASE = import.meta.env.BASE_URL; // "/personal-page/" en prod, "/" en dev
-
 export default function Education() {
   const { t } = useLang();
   const [ref, inView] = useInView();
@@ -32,24 +30,13 @@ export default function Education() {
             {/* Name */}
             <p className={styles.cardName}>{edu.name}</p>
 
-            {/* Bottom row: institution + button */}
+            {/* Bottom row: institution + badge */}
             <div className={styles.cardBottom}>
               <span className={styles.cardInst}>{edu.inst}</span>
 
-              {edu.pending ? (
+              {edu.pending && (
                 <span className={styles.pendingBadge}>{t.education.thesisPending}</span>
-              ) : edu.cert ? (
-                <a
-                  href={`${BASE}certificates/${edu.cert}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={styles.certBtn}
-                  title={t.education.viewCert}
-                >
-                  {t.education.viewCert}
-                  <span className={styles.certArrow} aria-hidden="true">↗</span>
-                </a>
-              ) : null}
+              )}
             </div>
           </div>
         ))}
