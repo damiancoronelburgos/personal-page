@@ -15,7 +15,7 @@ const CONTACT_LINKS = [
     val: "linkedin.com/in/damian-coronel-burgos",
     href: "https://www.linkedin.com/in/damian-coronel-burgos",
   },
-  { icon: "☎", val: "+54 381-448-1920", href: "tel:+5438144481920" },
+  { icon: "☎", val: "+54 381-448-1920", href: "https://wa.me/5438144481920" },
 ];
 
 export default function Contact() {
