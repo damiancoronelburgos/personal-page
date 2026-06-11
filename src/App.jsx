@@ -3,7 +3,6 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { LangProvider } from "./contexts/LangContext";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Hero from "./components/Hero/Hero";
-import About from "./components/About/About";
 import Skills from "./components/Skills/Skills";
 import Projects from "./components/Projects/Projects";
 import Education from "./components/Education/Education";
@@ -37,9 +36,8 @@ export default function App() {
 
           <main className="main-content">
             <Hero />
-            <About />
-            <Skills />
             <Projects />
+            <Skills />
             <Education />
             <Contact />
             <Footer />
