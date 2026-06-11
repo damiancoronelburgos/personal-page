@@ -7,11 +7,7 @@ export const T = {
       roles: [
         "Analista de Datos & Fraude",
         2400,
-        "Investigador Criminal",
-        2400,
-        "Experto en Ciberseguridad",
-        2400,
-        "Especialista en Fraude Digital",
+        "Desarrollador de software",
         2400,
       ],
       sub: "Transformo datos complejos en inteligencia accionable. Investigación criminal · Ciberseguridad · BI",
