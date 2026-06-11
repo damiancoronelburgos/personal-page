@@ -1,4 +1,6 @@
  https://damiancoronelburgos.github.io/personal-page/
+ http://damiancoronelburgos.dev/
+
 
 # React + Vite
 
