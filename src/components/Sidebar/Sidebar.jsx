@@ -5,7 +5,7 @@ import { useLang } from "../../contexts/LangContext";
 import useScrollSpy from "../../hooks/useScrollSpy";
 import styles from "./Sidebar.module.css";
 
-const SECTIONS = ["about", "skills", "projects", "education", "contact"];
+const SECTIONS = ["projects", "skills", "education", "contact"];
 
 const SOCIAL = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/damian-coronel-burgos" },

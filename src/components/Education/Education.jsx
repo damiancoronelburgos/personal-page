@@ -30,13 +30,9 @@ export default function Education() {
             {/* Name */}
             <p className={styles.cardName}>{edu.name}</p>
 
-            {/* Bottom row: institution + badge */}
+            {/* Bottom row: institution */}
             <div className={styles.cardBottom}>
               <span className={styles.cardInst}>{edu.inst}</span>
-
-              {edu.pending && (
-                <span className={styles.pendingBadge}>{t.education.thesisPending}</span>
-              )}
             </div>
           </div>
         ))}

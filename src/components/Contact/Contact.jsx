@@ -65,6 +65,14 @@ export default function Contact() {
         {/* Info */}
         <div className={styles.info}>
           <p className={styles.sub}>{t.contact.sub}</p>
+          <a
+            href="https://wa.me/5438144481920"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.whatsappBtn}
+          >
+            💬 WhatsApp
+          </a>
           <div className={styles.links}>
             {CONTACT_LINKS.map((c, i) => (
               <a

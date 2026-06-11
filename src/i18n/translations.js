@@ -10,7 +10,7 @@ export const T = {
         "Desarrollador de software",
         2400,
       ],
-      sub: "Transformo datos complejos en inteligencia accionable. Investigación criminal · Ciberseguridad · BI",
+      sub: "Transformando datos en decisiones e ideas en soluciones.",
       cta1: "Ver proyectos",
       cta2: "Contactar",
     },
@@ -47,9 +47,9 @@ export const T = {
         highlight: true,
       },
     ],
-    education: { label: "Formación & Certificaciones", viewCert: "Ver título", thesisPending: "Tesis pendiente" },
+    education: { label: "Formación & Certificaciones", viewCert: "Ver título",  },
     eduList: [
-      { name: "Lic. en Investigación Criminal",                     inst: "IUPFA",                         year: "Tesis pendiente", cert: null,                              pending: true  },
+      { name: "Lic. en Investigación Criminal",                     inst: "IUPFA",                         year: "2026", cert: null,                              pending: true  },
       { name: "Tec. Superior en Desarrollo de Software",            inst: "IFTS N° 29",                    year: "2025",            cert: "ifts-terciario.pdf" },
       { name: "Tec. Universitaria en Seguridad Ciudadana",          inst: "IUPFA",                         year: "2022",            cert: "terciario-iupfa.pdf" },
       { name: "Diplomatura en Investigación de Ciberdelitos",       inst: "UNLZ",                          year: "2023",            cert: "diplomatura-ciberdelitos-unlz.jpg" },
@@ -63,7 +63,7 @@ export const T = {
     contact: {
       label: "Contacto",
       title: "Hablemos",
-      sub: "¿Buscás un analista que combine datos, investigación y ciberseguridad? Estoy disponible.",
+      sub: "¿Tenés datos, pero no respuestas? ¿Una idea, pero no sabés cómo desarrollarla? Te ayudo a transformar información en decisiones y proyectos en soluciones reales mediante análisis de datos, dashboards y desarrollo de software.",
       name: "Nombre",
       email: "Email",
       message: "Mensaje",
@@ -139,7 +139,7 @@ export const T = {
     contact: {
       label: "Contact",
       title: "Let's talk",
-      sub: "Looking for an analyst who combines data, investigation and cybersecurity? I'm available.",
+      sub: "Need to turn data into actionable intelligence? Have an idea and want to make it real? I can help. Have tons of data and don't know where to start? Let me help you make sense of it.",
       name: "Name",
       email: "Email",
       message: "Message",
