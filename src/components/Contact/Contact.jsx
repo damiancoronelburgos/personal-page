@@ -15,20 +15,43 @@ const CONTACT_LINKS = [
     val: "linkedin.com/in/damian-coronel-burgos",
     href: "https://www.linkedin.com/in/damian-coronel-burgos",
   },
-  { icon: "☎", val: "+54 381-448-1920", href: "tel:+5438144481920" },
+  { icon: "☎", val: "+54 381-448-1920", href: "https://wa.me/5438144481920" },
 ];
+
+const FORMSPREE_ID = "xaqzpyon";
 
 export default function Contact() {
   const { lang, t } = useLang();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [ref, inView] = useInView();
 
-  const handleSend = (e) => {
+  const handleSend = async (e) => {
     e.preventDefault();
-    setSent(true);
-    setForm({ name: "", email: "", message: "" });
-    setTimeout(() => setSent(false), 4000);
+    setLoading(true);
+    setError(false);
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (response.ok) {
+        setSent(true);
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => setSent(false), 4000);
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -88,10 +111,15 @@ export default function Contact() {
           </div>
           <button
             type="submit"
-            className={`${styles.submitBtn} ${sent ? styles.sent : ""}`}
+            className={`${styles.submitBtn} ${sent ? styles.sent : ""} ${error ? styles.error : ""}`}
+            disabled={loading}
           >
-            {sent
+            {loading
+              ? lang === "es" ? "Enviando..." : "Sending..."
+              : sent
               ? lang === "es" ? "¡Enviado! ✓" : "Sent! ✓"
+              : error
+              ? lang === "es" ? "Error al enviar" : "Error sending"
               : t.contact.send}
           </button>
         </form>
